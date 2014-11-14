@@ -1,10 +1,20 @@
 package com.epam.jmp.jboss.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "USERS_TABLE")
 public class User {
 
+    @Id
     private String login;
 
     private String name;
+
+    public User() {
+    }
 
     public User(String login, String name) {
         this.login = login;

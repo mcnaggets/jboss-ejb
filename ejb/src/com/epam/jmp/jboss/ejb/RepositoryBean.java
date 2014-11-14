@@ -2,20 +2,19 @@ package com.epam.jmp.jboss.ejb;
 
 import com.epam.jmp.jboss.model.User;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
 @Stateless(name = "RepositoryBeanEJB")
 public class RepositoryBean {
 
-    private static final List<User> USERS = new ArrayList<>();
-
-    static {
-        USERS.add(new User("admin", "Jack Patton"));
-        USERS.add(new User("test", "John Snow"));
-        USERS.add(new User("guest", "Unknown"));
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public RepositoryBean() {
     }
@@ -25,16 +24,19 @@ public class RepositoryBean {
     }
 
     public List<User> getUsers() {
-        return USERS;
+        Query query = entityManager.createQuery("SELECT u FROM User u");
+        return query.getResultList();
     }
 
     public User getUser(String userId) {
-        for (User user : USERS) {
-            if (userId.equals(user.getLogin())) {
-                return user;
-            }
-        }
-        return null;
+        return entityManager.find(User.class, userId);
+    }
+
+    @PostConstruct
+    void init() {
+        entityManager.persist(new User("admin", "Jack Patton"));
+        entityManager.persist(new User("test", "John Snow"));
+        entityManager.persist(new User("guest", "Unknown"));
     }
 
 }
