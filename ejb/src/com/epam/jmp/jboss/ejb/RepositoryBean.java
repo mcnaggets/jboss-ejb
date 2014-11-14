@@ -7,7 +7,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 @Stateless(name = "RepositoryBeanEJB")
@@ -19,10 +18,6 @@ public class RepositoryBean {
     public RepositoryBean() {
     }
 
-    public String sayHello() {
-        return "Hello, World!";
-    }
-
     public List<User> getUsers() {
         Query query = entityManager.createQuery("SELECT u FROM User u");
         return query.getResultList();
@@ -30,6 +25,10 @@ public class RepositoryBean {
 
     public User getUser(String userId) {
         return entityManager.find(User.class, userId);
+    }
+
+    public void saveUser(User user) {
+        entityManager.persist(user);
     }
 
     @PostConstruct

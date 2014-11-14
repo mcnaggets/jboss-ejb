@@ -21,6 +21,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="JBoss 7.3.0.Final-redhat-14" level="application_server_libraries" />
     <orderEntry type="module" module-name="ejb" />
+    <orderEntry type="library" name="JsonProcessing" level="project" />
   </component>
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="_basePreferences">

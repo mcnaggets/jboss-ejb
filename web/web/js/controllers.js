@@ -4,6 +4,11 @@ userControllers.controller('UserListController', ['$scope', 'User',
     function ($scope, User) {
         $scope.users = User.query();
         $scope.orderProp = 'name';
+        $scope.generateUser = function() {
+            var user = new User({login: 'test', name: 'Test'});
+            user.$save();
+            $scope.users.push(user);
+        };
     }
 ]);
 

@@ -16,8 +16,8 @@ public class ServiceBean {
     public ServiceBean() {
     }
 
-    public String sayHello() {
-        return repositoryBean.sayHello();
+    public void saveUser(User user) {
+        repositoryBean.saveUser(user);
     }
 
     public List<User> getUsers() {
