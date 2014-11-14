@@ -7,13 +7,13 @@
     <enterprise-beans>
         <session>
             <ejb-name>RepositoryBeanEJB</ejb-name>
-            <ejb-class>com.epam.jmp.jboss.RepositoryBean</ejb-class>
+            <ejb-class>com.epam.jmp.jboss.ejb.RepositoryBean</ejb-class>
             <session-type>Stateless</session-type>
             <transaction-type>Container</transaction-type>
         </session>
         <session>
             <ejb-name>ServiceBeanEJB</ejb-name>
-            <ejb-class>com.epam.jmp.jboss.ServiceBean</ejb-class>
+            <ejb-class>com.epam.jmp.jboss.ejb.ServiceBean</ejb-class>
             <session-type>Stateless</session-type>
             <transaction-type>Container</transaction-type>
         </session>
